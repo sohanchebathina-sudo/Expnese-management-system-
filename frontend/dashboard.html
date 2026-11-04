@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Ledgerly - Expense Management System</title>
+    <meta name="description" content="Personal Expense Management Dashboard featuring income vs expenses, category insights, budget progress, and recent transactions.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" aria-label="Main Navigation">
+            <a class="brand" href="dashboard.html" aria-label="Ledgerly Brand">
+                <b class="brand-mark">L</b>
+                <span>ledgerly</span>
+            </a>
+            
+            <div class="eyebrow">Workspace</div>
+            <nav class="nav">
+                <a class="active" href="dashboard.html" id="navDashboard">
+                    <span class="nav-icon">◒</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="expenses.html" id="navExpenses">
+                    <span class="nav-icon">≡</span>
+                    <span>Expenses</span>
+                </a>
+                <a href="add-expense.html" id="navAddExpense">
+                    <span class="nav-icon">＋</span>
+                    <span>Add Expense</span>
+                </a>
+                <a href="budget.html" id="navBudget">
+                    <span class="nav-icon">◫</span>
+                    <span>Budget</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <span class="nav-icon">↪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-foot">
+                <div class="user-chip">
+                    <span class="avatar user-initial">A</span>
+                    <span class="user-name">
+                        <b class="user-display">Alex Morgan</b><br>
+                        <small>Personal workspace</small>
+                    </span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <div class="eyebrow" id="dateLabel">Tuesday, October 20, 2026</div>
+                    <h1>Good day, <span class="user-display">Alex</span>.</h1>
+                    <p>Here’s the complete picture of your income, expenses, and budget this month.</p>
+                </div>
+                <div class="actions">
+                    <a class="btn btn-ghost" href="expenses.html" id="viewExpensesBtn">View expenses</a>
+                    <a class="btn btn-primary" href="add-expense.html" id="addExpenseBtn">＋ Add expense</a>
+                </div>
+            </header>
+
+            <!-- 1. Summary Cards (Total Income, Total Expenses, Remaining Balance, Monthly Budget) -->
+            <section class="dashboard-stats" aria-label="Summary Overview Cards">
+                <article class="stat stat-income">
+                    <div class="stat-label">Total Income</div>
+                    <div class="stat-value" id="totalIncome">₹0.00</div>
+                    <div class="stat-note income-badge" id="incomeNote">● Earned this month</div>
+                </article>
+
+                <article class="stat stat-expense">
+                    <div class="stat-label">Total Expenses</div>
+                    <div class="stat-value" id="totalSpent">₹0.00</div>
+                    <div class="stat-note expense-badge" id="expenseNote">
+                        ● <span id="transactionCount">0</span> transactions
+                    </div>
+                </article>
+
+                <article class="stat stat-balance">
+                    <div class="stat-label">Remaining Balance</div>
+                    <div class="stat-value" id="remainingBalance">₹0.00</div>
+                    <div class="stat-note balance-badge" id="balanceNote">Net cash flow (Income − Expenses)</div>
+                </article>
+
+                <article class="stat stat-budget">
+                    <div class="stat-label">Monthly Budget</div>
+                    <div class="stat-value" id="budgetTotal">₹0.00</div>
+                    <div class="stat-note" id="remainingBudgetNote">
+                        <span id="remainingBudget">₹0.00</span> left to spend
+                    </div>
+                </article>
+            </section>
+
+            <!-- 2. Charts Section (Income vs Expenses Chart & Category-wise Expense Chart) -->
+            <section class="charts-grid" aria-label="Data Visualizations">
+                <!-- Income vs Expenses Chart -->
+                <article class="chart-panel">
+                    <div class="chart-header">
+                        <div>
+                            <h2>Income vs. Expenses</h2>
+                            <span class="eyebrow">Monthly comparison</span>
+                        </div>
+                    </div>
+                    <div class="chart-container" id="incomeExpenseChartContainer">
+                        <canvas id="incomeVsExpensesChart"></canvas>
+                    </div>
+                </article>
+
+                <!-- Category-wise Expense Chart -->
+                <article class="chart-panel">
+                    <div class="chart-header">
+                        <div>
+                            <h2>Expenses by Category</h2>
+                            <span class="eyebrow">Current month distribution</span>
+                        </div>
+                    </div>
+                    <div class="chart-container" id="categoryChartContainer">
+                        <canvas id="categoryExpenseChart"></canvas>
+                    </div>
+                    <div class="category-pills-wrap" id="categoryPills"></div>
+                </article>
+            </section>
+
+            <!-- 3. Content Section (Recent Transactions Table & Monthly Budget Progress Bar) -->
+            <section class="dashboard-content-grid" aria-label="Recent Transactions and Budget Monitoring">
+                <!-- Recent Transactions Table -->
+                <article class="recent-transactions-panel">
+                    <div class="panel-head">
+                        <h2>Recent Transactions</h2>
+                        <a class="link" href="expenses.html">See all →</a>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="recent-table">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Paid with</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTransactionsTable">
+                                <tr>
+                                    <td colspan="5" class="empty">Loading transactions from database...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- Monthly Budget Progress Bar Panel -->
+                <article class="budget-progress-panel">
+                    <div class="panel-head">
+                        <h2>Budget Progress</h2>
+                        <a class="link" href="budget.html">Manage →</a>
+                    </div>
+                    
+                    <div class="budget-widget">
+                        <div class="eyebrow" id="budgetMonthLabel">Monthly Budget</div>
+                        <div class="budget-widget-remaining" id="widgetBudgetRemaining">₹0.00 left</div>
+                        <div class="budget-widget-subtitle">
+                            <span id="widgetBudgetSpent">₹0.00</span> spent of <span id="widgetBudgetLimit">₹0.00</span>
+                        </div>
+                        <div class="budget-widget-progress">
+                            <span class="budget-widget-progress-fill" id="widgetBudgetProgressFill" style="width: 0%"></span>
+                        </div>
+                    </div>
+
+                    <div class="budget-status-row">
+                        <span>Budget Consumption: <b id="budgetPercentLabel">0%</b></span>
+                        <span class="budget-status-pill good" id="budgetStatusPill">On Track</span>
+                    </div>
+
+                    <p style="color:var(--muted);font-size:12px;line-height:1.6;margin-top:2px;">
+                        Keeping your everyday expenses within your monthly boundary helps ensure consistent savings each month.
+                    </p>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/chart.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "exp_001",
+    "title": "Team lunch",
+    "category": "Food",
+    "amount": 86.40,
+    "date": "2026-09-16",
+    "note": "Quarterly planning lunch",
+    "paymentMethod": "Card"
+  },
+  {
+    "id": "exp_002",
+    "title": "Metro pass",
+    "category": "Transport",
+    "amount": 42.00,
+    "date": "2026-09-14",
+    "note": "Monthly commute pass",
+    "paymentMethod": "Card"
+  },
+  {
+    "id": "exp_003",
+    "title": "Cloud storage",
+    "category": "Bills",
+    "amount": 18.99,
+    "date": "2026-09-11",
+    "note": "Workspace subscription",
+    "paymentMethod": "Transfer"
+  },
+  {
+    "id": "exp_004",
+    "title": "Grocery run",
+    "category": "Shopping",
+    "amount": 124.73,
+    "date": "2026-09-08",
+    "note": "Weekly essentials",
+    "paymentMethod": "Card"
+  }
+]

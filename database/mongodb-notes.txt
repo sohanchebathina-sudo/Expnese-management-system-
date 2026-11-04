@@ -1,0 +1,5 @@
+# Database notes
+
+The starter app uses `backend/data/expenses.json` so it runs without external services.
+For MongoDB, store expenses in an `expenses` collection and users in a `users` collection.
+Suggested indexes: `expenses.date`, `expenses.category`, and `expenses.userId`.

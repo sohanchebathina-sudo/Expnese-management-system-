@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget | Ledgerly</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar"><a class="brand" href="dashboard.html"><b
+                    class="brand-mark">L</b><span>ledgerly</span></a>
+            <div class="eyebrow">Workspace</div>
+            <nav class="nav"><a href="dashboard.html"><span class="nav-icon">◒</span><span>Dashboard</span></a><a
+                    href="expenses.html"><span class="nav-icon">≡</span><span>Expenses</span></a><a
+                    href="add-expense.html"><span class="nav-icon">＋</span><span>Add Expense</span></a><a
+                    class="active" href="budget.html"><span class="nav-icon">◫</span><span>Budget</span></a><a
+                    href="#" id="logoutBtn"><span class="nav-icon">↪</span><span>Logout</span></a></nav>
+            <div class="sidebar-foot">
+                <div class="user-chip"><span class="avatar user-initial">A</span><span class="user-name"><b
+                            class="user-display">Alex Morgan</b><br><small>Personal workspace</small></span></div>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <div class="eyebrow">Workspace / Plan</div>
+                    <h1>Your monthly budget</h1>
+                    <p>Give your spending a boundary that still leaves room to live.</p>
+                </div>
+            </header>
+            <section class="grid content-grid">
+                <div class="grid">
+                    <article class="budget-hero">
+                        <div class="eyebrow">Monthly Limit</div>
+                        <div class="budget-amount" id="budgetRemaining">₹0.00 left</div>
+                        <p><span id="budgetSpent">₹0.00</span> spent of <span id="budgetAmount">₹0.00</span></p>
+                        <div class="progress"><span id="budgetProgress" style="width:0%"></span></div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-head">
+                            <h2>Set a new limit</h2>
+                        </div>
+                        <form id="budgetForm" class="form-grid">
+                            <div class="field"><label for="newBudget">Monthly budget</label><input id="newBudget"
+                                    type="number" min="1" step="1" required></div>
+                            <div class="form-actions" style="align-items:end"><button class="btn btn-primary"
+                                    type="submit">Update budget</button></div>
+                        </form>
+                    </article>
+                </div>
+                <article class="panel">
+                    <div class="panel-head">
+                        <h2>Budget rhythm</h2>
+                    </div>
+                    <p style="color:var(--muted);line-height:1.7">A useful budget is a reference point, not a
+                        punishment. Check in once a week, notice what changed, and adjust your plan when your life
+                        changes.</p>
+                </article>
+            </section>
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/budget.js"></script>
+</body>
+
+</html>
